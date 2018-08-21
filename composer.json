@@ -1,0 +1,34 @@
+{
+  "name": "ptx/lumen-require",
+  "description": "Lumen 生产环境集成",
+  "keywords": [
+    "laravel",
+    "lumen"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/YunhanTech/laravel-ddoc",
+  "authors": [
+    {
+      "name": "ptx",
+      "email": "putianxin@vip.qq.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^6.3",
+    "illuminate/redis": "^5.5",
+    "predis/predis": "^1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ptx\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  }
+}
