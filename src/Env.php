@@ -1,5 +1,5 @@
 <?php
-namespace PTX;
+namespace Ptx;
 
 class Env
 {
