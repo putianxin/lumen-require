@@ -109,3 +109,16 @@ if (!function_exists('logger')) {
         return app('log')->debug($message, $context);
     }
 }
+
+if(!function_exists('exception')) {
+    /**
+     * Quickly throw out the wrong
+     * @param $message
+     * @param int $code
+     * @throws Exception
+     */
+    function exception($message, $code = 500){
+        throw new Exception($message,$code);
+    }
+}
+
