@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Auth\Access\AuthorizationException;
 
 if (!function_exists('config_path')) {
     /**
@@ -118,7 +119,7 @@ if(!function_exists('exception')) {
      * @throws Exception
      */
     function exception($message, $code = 500){
-        throw new Exception($message,$code);
+        throw new AuthorizationException($message,$code);
     }
 }
 
