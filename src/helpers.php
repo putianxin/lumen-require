@@ -123,3 +123,26 @@ if(!function_exists('exception')) {
     }
 }
 
+if(!function_exists('getReportTime')) {
+    /**
+     * Rapid creation time
+     * @param $time
+     * @param int $type
+     * @return string|false
+     */
+    function getReportTime($time, $type)
+    {
+        if ($time) {
+            $time = is_numeric($time) ? $time : strtotime($time);
+            if ($type == 1) {
+                return date('Y-m-d 00:00:00', $time);
+            } else {
+                if ($time < 946656000) {
+                    return date('Y-m-d 23:59:59');
+                }
+                return date('Y-m-d 23:59:59', $time);
+            }
+        }
+        return false;
+    }
+}
