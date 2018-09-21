@@ -8,6 +8,8 @@
     - cache
     - request
     - logger
+    - exception
+    - getReportTime
 
 ## 集成模块
 - guzzlehttp/guzzle：用于发起外部请求
