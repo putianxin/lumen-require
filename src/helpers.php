@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Auth\Access\AuthorizationException;
+use Carbon\Carbon;
 
 if (!function_exists('config_path')) {
     /**
@@ -155,5 +156,17 @@ if (!function_exists('resolve')) {
     function resolve($name)
     {
         return app($name);
+    }
+}
+
+if(!function_exists('dateToString')) {
+    function dateToString($time)
+    {
+        if($time instanceof Carbon)
+        {
+            return $time->toDateTimeString();
+        }else{
+            return $time;
+        }
     }
 }
