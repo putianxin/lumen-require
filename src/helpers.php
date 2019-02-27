@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Auth\Access\AuthorizationException;
 use Carbon\Carbon;
 
@@ -31,7 +32,7 @@ if (!function_exists('asset')) {
     /**
      * Generate an asset path for the application.
      * @param  string $path
-     * @param  bool   $secure
+     * @param  bool $secure
      * @return string
      */
     function asset($path, $secure = null)
@@ -79,7 +80,7 @@ if (!function_exists('request')) {
     /**
      * Get an instance of the current request or an input item from the request.
      * @param  array|string $key
-     * @param  mixed        $default
+     * @param  mixed $default
      * @return \Illuminate\Http\Request|string|array
      */
     function request($key = null, $default = null)
@@ -99,7 +100,7 @@ if (!function_exists('logger')) {
     /**
      * Log a debug message to the logs.
      * @param  string $message
-     * @param  array  $context
+     * @param  array $context
      * @return \Illuminate\Log\LogManager|null
      */
     function logger($message = null, array $context = [])
@@ -112,19 +113,20 @@ if (!function_exists('logger')) {
     }
 }
 
-if(!function_exists('exception')) {
+if (!function_exists('exception')) {
     /**
      * Quickly throw out the wrong
      * @param $message
      * @param int $code
      * @throws Exception
      */
-    function exception($message, $code = 500){
-        throw new AuthorizationException($message,$code);
+    function exception($message, $code = 500)
+    {
+        throw new AuthorizationException($message, $code);
     }
 }
 
-if(!function_exists('getReportTime')) {
+if (!function_exists('getReportTime')) {
     /**
      * Rapid creation time
      * @param $time
@@ -159,14 +161,45 @@ if (!function_exists('resolve')) {
     }
 }
 
-if(!function_exists('dateToString')) {
+if (!function_exists('dateToString')) {
     function dateToString($time)
     {
-        if($time instanceof Carbon)
-        {
+        if ($time instanceof Carbon) {
             return $time->toDateTimeString();
-        }else{
+        } else {
             return $time;
         }
+    }
+}
+
+if (!function_exists('numberToBitArray')) {
+    function numberToBitArray($number, $n)
+    {
+        $return = [];
+        for ($i = 1; $i < $n; $i++) {
+            if ($number & 0x01 == 0x01) {
+                $return[$i] = 1;
+            } else {
+                $return[$i] = 0;
+            }
+            $number = $number >> 1;
+        }
+        return $return;
+    }
+}
+
+if (!function_exists('bitJsonToNumber')) {
+    function bitArrayToNumber($json, $number)
+    {
+        if (!$json) {
+            $return = pow(2, ($number + 1)) - 1;
+        } else {
+            $array = json_decode($json, true);
+            $return = 0;
+            foreach ($array as $key => $val) {
+                $return += $val ? pow(2, ($key - 1)) : 0;
+            }
+        }
+        return $return;
     }
 }
