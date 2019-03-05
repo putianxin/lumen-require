@@ -179,10 +179,11 @@ if (!function_exists('numberToBitArray')) {
         for ($i = 1; $i < $n; $i++) {
             if ($number & 0x01 == 0x01) {
                 $return[$i] = 1;
-            } else {
-                $return[$i] = 0;
             }
             $number = $number >> 1;
+        }
+        if(!$return){
+            $return = [1=>0];
         }
         return $return;
     }
@@ -197,9 +198,7 @@ if (!function_exists('bitJsonToNumber')) {
             $array = json_decode($json, true);
             $return = 0;
             foreach ($array as $key => $val) {
-                foreach($val as $k=>$v) {
-                    $return += $v ? pow(2, ($k - 1)) : 0;
-                }
+                $return += $val ? pow(2, ($key - 1)) : 0;
             }
         }
         return $return;
