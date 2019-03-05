@@ -189,7 +189,7 @@ if (!function_exists('numberToBitArray')) {
 }
 
 if (!function_exists('bitJsonToNumber')) {
-    function bitArrayToNumber($json, $number)
+    function bitJsonToNumber($json, $number)
     {
         if (!$json) {
             $return = pow(2, ($number + 1)) - 1;
@@ -197,7 +197,9 @@ if (!function_exists('bitJsonToNumber')) {
             $array = json_decode($json, true);
             $return = 0;
             foreach ($array as $key => $val) {
-                $return += $val ? pow(2, ($key - 1)) : 0;
+                foreach($val as $k=>$v) {
+                    $return += $v ? pow(2, ($k - 1)) : 0;
+                }
             }
         }
         return $return;
