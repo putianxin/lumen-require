@@ -15,6 +15,18 @@ if (!function_exists('config_path')) {
     }
 }
 
+if (!function_exists('app_path')) {
+    /**
+     * Get the configuration path.
+     * @param  string $path
+     * @return string
+     */
+    function app_path($path = '')
+    {
+        return app()->basePath() . '/app' . ($path ? '/' . $path : $path);
+    }
+}
+
 if (!function_exists('public_path')) {
     /**
      * Get the public path.
