@@ -199,7 +199,7 @@ if (!function_exists('numberToBitArray')) {
             $number = $number >> 1;
         }
         if(!$return){
-            $return = [1=>0];
+            $return = null;
         }
         return $return;
     }
