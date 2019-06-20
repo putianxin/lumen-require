@@ -138,7 +138,7 @@ if (!function_exists('exception')) {
      */
     function exception($message, $code = 500)
     {
-        throw new AuthorizationException($message, $code);
+        throw new ValidationException($message, $code);
     }
 }
 
