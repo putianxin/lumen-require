@@ -15,7 +15,7 @@
   ],
   "require": {
     "guzzlehttp/guzzle": "^6.3",
-    "illuminate/redis": "^5.5",
+    "illuminate/redis": "^6.18",
     "predis/predis": "^1.1"
   },
   "autoload": {
